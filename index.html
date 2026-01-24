@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEKAI DOTA BOOST - Recalibração</title>
+<style>
+:root{
+  --bg-top:#7dd3fc;
+  --bg-bottom:#6d28d9;
+  --card:#0f1117;
+  --card-soft:#141824;
+  --primary:#8b5cf6;
+  --text:#f3f4f6;
+  --muted:#c4b5fd;
+  --danger:#ef4444;
+}
+*{box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+  color:var(--text);
+}
+.card{
+  width:100%;
+  max-width:420px;
+  background:var(--card);
+  border-radius:18px;
+  padding:26px;
+  box-shadow:0 25px 50px rgba(0,0,0,.45);
+}
+h1{
+  margin:0;
+  text-align:center;
+  color:var(--muted);
+}
+.subtitle{
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  margin:6px 0 18px;
+}
+label{
+  display:block;
+  margin-top:14px;
+  margin-bottom:6px;
+  font-size:14px;
+}
+input[type=text],input[type=number]{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #2a2f45;
+  background:var(--card-soft);
+  color:var(--text);
+}
+.check{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:12px;
+  font-size:14px;
+}
+details{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+summary{
+  cursor:pointer;
+  color:var(--muted);
+}
+.result{
+  margin-top:18px;
+  padding:14px;
+  border-radius:12px;
+  background:var(--card-soft);
+  min-height:48px;
+}
+.alert{
+  margin-top:8px;
+  font-size:13px;
+  color:var(--danger);
+}
+button{
+  margin-top:18px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:var(--primary);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+.footer{
+  margin-top:14px;
+  font-size:12px;
+  text-align:center;
+  color:var(--muted);
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>SEKAI DOTA BOOST</h1>
+  <div class="subtitle"><strong>Serviço de Recalibração</strong><br>Calculadora de serviço</div>
+
+  <label>Nome</label>
+  <input type="text" id="name">
+
+  <label>MMR Atual</label>
+  <input type="number" id="mmr">
+
+  <div class="check">
+    <input type="checkbox" id="off">
+    <span>Off stream (+ R$40 fixo) na Twitch sekai_oficial</span>
+  </div>
+
+  <div class="check">
+    <input type="checkbox" id="bs">
+    <span>Possuo mais de 8k de Behavior Score</span>
+  </div>
+
+  <div class="check">
+    <input type="checkbox" id="terms">
+    <span>Li e concordo com os termos</span>
+  </div>
+
+  <details>
+    <summary>Ler mais</summary>
+    <p>
+      • Serviço de recalibração possui média de 15 a 16 jogos.<br>
+      • Não garantimos MMR final ou vitórias.<br>
+      • O pagamento é necessário para garantir a vaga no serviço.<br>
+          </p>
+  </details>
+
+  <div class="result" id="result">Digite o MMR para calcular o valor.</div>
+  <div class="alert" id="alert"></div>
+
+  <button id="zap">Contratar via WhatsApp</button>
+
+  <div class="footer">Média de 15 a 16 jogos</div>
+</div>
+
+<script>
+const mmrInput = document.getElementById("mmr");
+const nameInput = document.getElementById("name");
+const off = document.getElementById("off");
+const bs = document.getElementById("bs");
+const terms = document.getElementById("terms");
+const result = document.getElementById("result");
+const alertBox = document.getElementById("alert");
+const zap = document.getElementById("zap");
+
+function calcular(){
+  const mmr = Number(mmrInput.value);
+  let total = null;
+  let avisos = [];
+
+  result.innerHTML = "";
+  alertBox.innerHTML = "";
+
+  if(!mmr){
+    result.innerHTML = "Digite o MMR para calcular o valor.";
+    return;
+  }
+
+  if(mmr <= 4000){
+    total = 200;
+  }else if(mmr <= 6000){
+    total = 250;
+  }else{
+    result.innerHTML = "<strong>Preço: INVÁLIDO</strong>";
+    alertBox.innerHTML = "🚫 Esse MMR não é compatível com este serviço.";
+    return;
+  }
+
+  if(off.checked){
+    total += 40;
+  }
+
+  result.innerHTML = `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+
+  if(!bs.checked){
+    avisos.push("⚠️ É necessário possuir mais de 8k de Behavior Score.");
+  }
+  if(!terms.checked){
+    avisos.push("⚠️ É necessário aceitar os termos do serviço.");
+  }
+
+  alertBox.innerHTML = avisos.join("<br>");
+
+  zap.onclick = () => {
+    window.open(
+      `https://wa.me/5521991844917?text=Olá! Gostaria de contratar o Serviço de Recalibração.%0ANome:${nameInput.value || "Não informado"}%0AMMR:${mmr}%0AOff stream:${off.checked ? "Sim" : "Não"}%0ATotal:R$${total.toFixed(2)}`
+    );
+  };
+}
+
+mmrInput.addEventListener("input", calcular);
+nameInput.addEventListener("input", calcular);
+off.addEventListener("change", calcular);
+bs.addEventListener("change", calcular);
+terms.addEventListener("change", calcular);
+</script>
+
+</body>
+</html>
