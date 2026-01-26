@@ -1,94 +1,84 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEKAI DOTA BOOST - Recalibração</title>
+<title>SEKAI DOTA BOOST — Recalibração</title>
+
 <style>
 :root{
-  --bg-top:#7dd3fc;
-  --bg-bottom:#6d28d9;
-  --card:#0f1117;
+  --bg-top:#9f7dfc;
+  --bg-bottom:#443064;
+  --card:#221425bb;
   --card-soft:#141824;
   --primary:#8b5cf6;
   --text:#f3f4f6;
-  --muted:#c4b5fd;
+  --muted:#c4aeca;
   --danger:#ef4444;
+  --success:#22c55e;
 }
-*{box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
   margin:0;
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+  background:
+    linear-gradient(rgba(15,17,23,.35),rgba(15,17,23,.35)),
+    url("sua-imagem-cosmica.png");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
   color:var(--text);
 }
+.wrap{max-width:720px;margin:auto;padding:18px}
+.header{text-align:center;margin-bottom:14px}
+.sub{font-size:14px;color:#fff}
+
 .card{
-  width:100%;
-  max-width:420px;
   background:var(--card);
-  border-radius:18px;
-  padding:26px;
-  box-shadow:0 25px 50px rgba(0,0,0,.45);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 14px 35px rgba(162,0,255,.18);
 }
-h1{
+
+.card h2{
   margin:0;
-  text-align:center;
+  font-size:16px;
   color:var(--muted);
+  display:flex;
+  justify-content:space-between;
 }
-.subtitle{
-  text-align:center;
-  font-size:14px;
-  color:var(--muted);
-  margin:6px 0 18px;
+
+.pill{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(139,92,246,.25);
+  border:1px solid rgba(139,92,246,.25);
 }
-label{
-  display:block;
-  margin-top:14px;
-  margin-bottom:6px;
-  font-size:14px;
-}
-input[type=text],input[type=number]{
+
+label{display:block;margin-top:10px;font-size:13px}
+input[type=number]{
   width:100%;
-  padding:12px;
+  padding:11px;
   border-radius:12px;
   border:1px solid #2a2f45;
   background:var(--card-soft);
   color:var(--text);
 }
-.check{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  margin-top:12px;
-  font-size:14px;
-}
-details{
-  margin-top:10px;
-  font-size:13px;
-  color:var(--muted);
-}
-summary{
-  cursor:pointer;
-  color:var(--muted);
-}
+
+.check{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:13px}
 .result{
-  margin-top:18px;
-  padding:14px;
+  margin-top:12px;
+  padding:12px;
   border-radius:12px;
   background:var(--card-soft);
-  min-height:48px;
-}
-.alert{
-  margin-top:8px;
   font-size:13px;
-  color:var(--danger);
 }
+.alert{color:var(--danger);font-size:13px}
+details{margin-top:10px;color:var(--muted);font-size:13px}
+summary{cursor:pointer}
+
 button{
-  margin-top:18px;
   width:100%;
   padding:14px;
   border:none;
@@ -98,118 +88,129 @@ button{
   font-size:16px;
   cursor:pointer;
 }
-.footer{
-  margin-top:14px;
-  font-size:12px;
-  text-align:center;
-  color:var(--muted);
-}
+button:disabled{opacity:.55}
+
+.footer{text-align:center;margin-top:12px;font-size:12px;color:var(--muted)}
+.newPrice{color:var(--success);font-weight:800}
 </style>
 </head>
+
 <body>
+<div class="wrap">
+
+<div class="header">
+  <h1>SEKAI DOTA BOOST</h1>
+  <div class="sub"><strong>Recalibração</strong> • Serviço pontual</div>
+</div>
 
 <div class="card">
-  <h1>SEKAI DOTA BOOST</h1>
-  <div class="subtitle"><strong>Serviço de Recalibração</strong><br>Calculadora de serviço</div>
 
-  <label>Nome</label>
-  <input type="text" id="name">
+<h2>
+  <span>Recalibração</span>
+  <span class="pill">🔄 recomendado</span>
+</h2>
 
-  <label>MMR Atual</label>
-  <input type="number" id="mmr">
+<label>MMR Atual</label>
+<input type="number" id="mmr" placeholder="Ex: 3500">
 
-  <div class="check">
-    <input type="checkbox" id="off">
-    <span>Off stream (+ R$40 fixo) na Twitch sekai_oficial</span>
-  </div>
+<div class="check">
+  <input type="checkbox" id="off">
+  <span>Off-stream (+ R$ 40,00) na Twitch sekai_oficial</span>
+</div>
 
-  <div class="check">
-    <input type="checkbox" id="bs">
-    <span>Possuo mais de 8k de Behavior Score</span>
-  </div>
+<details>
+<summary>🔍 Saiba mais sobre a Recalibração</summary>
 
-  <div class="check">
-    <input type="checkbox" id="terms">
-    <span>Li e concordo com os termos</span>
-  </div>
+<p><strong>🔄 Recalibração Simples</strong></p>
+<ul>
+  <li>15 a 16 partidas</li>
+  <li>Indicada para contas até 4.000 MMR</li>
+</ul>
 
-  <details>
-    <summary>Ler mais</summary>
-    <p>
-      • Serviço de recalibração possui média de 15 a 16 jogos.<br>
-      • Não garantimos MMR final ou vitórias.<br>
-      • O pagamento é necessário para garantir a vaga no serviço.<br>
-          </p>
-  </details>
+<p><strong>🔄 Recalibração Avançada</strong></p>
+<ul>
+  <li>Indicada para contas entre 4.000 e 6.000 MMR</li>
+</ul>
 
-  <div class="result" id="result">Digite o MMR para calcular o valor.</div>
-  <div class="alert" id="alert"></div>
+<p><strong>⚠️ Observações</strong></p>
+<ul>
+  <li>Não há garantia de MMR final</li>
+  <li>Resultado varia conforme a conta</li>
+</ul>
+</details>
 
-  <button id="zap">Contratar via WhatsApp</button>
+<div class="result" id="res">Informe o MMR para calcular o valor.</div>
+<div class="alert" id="alert"></div>
 
-  <div class="footer">Média de 15 a 16 jogos</div>
+<button id="zap" disabled>Contratar via WhatsApp</button>
+
+<div class="footer">
+Twitch: sekai_oficial • WhatsApp: +55 21 99184-4917<br>
+<small>Desenvolvido por <strong>@Kerolynchan</strong></small>
+</div>
+
+</div>
 </div>
 
 <script>
-const mmrInput = document.getElementById("mmr");
-const nameInput = document.getElementById("name");
-const off = document.getElementById("off");
-const bs = document.getElementById("bs");
-const terms = document.getElementById("terms");
-const result = document.getElementById("result");
-const alertBox = document.getElementById("alert");
-const zap = document.getElementById("zap");
+const $ = id => document.getElementById(id);
+const money = n => "R$ " + n.toFixed(2).replace(".",",");
 
-function calcular(){
-  const mmr = Number(mmrInput.value);
-  let total = null;
-  let avisos = [];
-
-  result.innerHTML = "";
-  alertBox.innerHTML = "";
+function update(){
+  const mmr = Number($("mmr").value);
+  const off = $("off").checked;
 
   if(!mmr){
-    result.innerHTML = "Digite o MMR para calcular o valor.";
+    $("res").innerHTML = "Informe o MMR para calcular.";
+    $("zap").disabled = true;
     return;
   }
+
+  let base = 0;
 
   if(mmr <= 4000){
-    total = 200;
+    base = 200;
   }else if(mmr <= 6000){
-    total = 250;
+    base = 250;
   }else{
-    result.innerHTML = "<strong>Preço: INVÁLIDO</strong>";
-    alertBox.innerHTML = "🚫 Esse MMR não é compatível com este serviço.";
+    $("res").innerHTML = "<strong>Preço inválido</strong>";
+    $("alert").textContent = "🚫 Recalibração não disponível para esse MMR.";
+    $("zap").disabled = true;
     return;
   }
 
-  if(off.checked){
-    total += 40;
-  }
+  $("alert").textContent = "";
 
-  result.innerHTML = `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+  const offValue = off ? 40 : 0;
+  const total = base + offValue;
 
-  if(!bs.checked){
-    avisos.push("⚠️ É necessário possuir mais de 8k de Behavior Score.");
-  }
-  if(!terms.checked){
-    avisos.push("⚠️ É necessário aceitar os termos do serviço.");
-  }
+  $("res").innerHTML = `
+<strong>Valor do serviço:</strong> ${money(base)}<br>
+<strong>Off-stream:</strong> ${off ? money(offValue) : money(0)}<br>
+<strong>Total:</strong> <span class="newPrice">${money(total)}</span>
+`;
 
-  alertBox.innerHTML = avisos.join("<br>");
+  $("zap").disabled = false;
 
-  zap.onclick = () => {
-    window.open(
-      `https://wa.me/5521991844917?text=Olá! Gostaria de contratar o Serviço de Recalibração.%0ANome:${nameInput.value || "Não informado"}%0AMMR:${mmr}%0AOff stream:${off.checked ? "Sim" : "Não"}%0ATotal:R$${total.toFixed(2)}`
+  $("zap").onclick = () => {
+    const msg = encodeURIComponent(
+`Olá! Quero contratar *Recalibração* na SEKAI DOTA BOOST.
+
+MMR atual: ${mmr}
+
+Valor do serviço: ${money(base)}
+Off-stream: ${off ? money(offValue) : "Não"}
+Total: ${money(total)}
+
+Obs.: Datas combinadas via WhatsApp.`
     );
+    window.open("https://wa.me/5521991844917?text=" + msg);
   };
 }
 
-mmrInput.addEventListener("input", calcular);
-nameInput.addEventListener("input", calcular);
-off.addEventListener("change", calcular);
-bs.addEventListener("change", calcular);
-terms.addEventListener("change", calcular);
+["mmr","off"].forEach(id =>
+  $(id).addEventListener("input", update)
+);
 </script>
 
 </body>
