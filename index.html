@@ -111,7 +111,7 @@ button:disabled{opacity:.55}
 </h2>
 
 <label>MMR Atual</label>
-<input type="number" id="mmr" placeholder="Ex: 3500">
+<input type="number" id="mmr" placeholder="Ex: 0 a 6000">
 
 <div class="check">
   <input type="checkbox" id="off">
@@ -193,19 +193,34 @@ function update(){
   $("zap").disabled = false;
 
   $("zap").onclick = () => {
-    const msg = encodeURIComponent(
-`Olá! Quero contratar *Recalibração* na SEKAI DOTA BOOST.
 
-MMR atual: ${mmr}
+  const tipo =
+    mmr <= 4000
+      ? "Recalibração Simples"
+      : "Recalibração Avançada";
 
-Valor do serviço: ${money(base)}
-Off-stream: ${off ? money(offValue) : "Não"}
-Total: ${money(total)}
+  const msg = encodeURIComponent(
+`🔄 *RECALIBRAÇÃO — SEKAI DOTA BOOST*
 
-Obs.: Datas combinadas via WhatsApp.`
-    );
-    window.open("https://wa.me/5521991844917?text=" + msg);
-  };
+📌 *DETALHES DO SERVIÇO*
+• MMR atual: ${mmr}
+• Tipo: ${tipo}
+
+💰 *VALORES*
+• Valor do serviço: ${money(base)}
+• Off-stream: ${off ? money(offValue) : "Não"}
+• Total: ${money(total)}
+
+📡 *OBSERVAÇÕES*
+• Serviço pontual
+• Não há garantia de MMR final
+• Datas e horários combinados após a confirmação do pagamento
+
+💬 Aguardo instruções para pagamento.`
+  );
+
+  window.open("https://wa.me/5521991844917?text=" + msg);
+};
 }
 
 ["mmr","off"].forEach(id =>
